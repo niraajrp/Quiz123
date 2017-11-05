@@ -1,0 +1,154 @@
+html {
+	background: url(../images/background.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	font-family: 'Helvetica Neue', sans-serif;
+
+}
+.prof-box {
+	width: 600px;
+	height: 500px;
+	background: rgba(0,0,0,0.4);
+	padding: 30px;
+	color: white;
+	line-height:1;
+	margin: 0 auto;
+	margin-top:150px;
+	text-align: center;
+}
+.prof-pic {
+	border-radius: 50%;
+	height: 200px;
+	width: 200px;
+}
+h1 {
+	color: floralwhite; 
+    font-weight: 100;
+    letter-spacing: 2;
+    font-size: 28px;
+}
+p1{
+	font-weight: 100;
+    font-size: 20px;
+	color: floralwhite;
+	line-height:1
+}
+.socialmedia-icons {
+	font-size: 30px
+	
+}
+
+.socialmedia-icons a {
+	color: white;
+	float: left;
+	letter-spacing: 10px;
+	line-height: 1;
+}
+.socialmedia-icons a :hover{
+	background-color: blue;
+}
+
+p2{
+	font-weight: 100;
+    font-size: 20px;
+	color: floralwhite; 
+	text-align: left;
+	float: left
+}
+.edu-details {
+	width: 600px;
+	height: 550px;
+	background: rgba(0,0,0,0.4);
+	padding: 30px;
+	color: white;
+	line-height:0.3;
+	margin: 0 auto;
+	margin-top:150px;
+	text-align: center;
+}
+h2 {
+	color: floralwhite; 
+    font-weight: 100;
+    letter-spacing: 2;
+    font-size: 28px;
+	text-align: left;
+	color: red;
+}
+h3 {
+	color: green; 
+    font-weight: 800;
+    letter-spacing: 1;
+    font-size: 25px;
+	text-align: left;
+}
+h4 {
+	color: floralwhite; 
+    font-weight: 300;
+    letter-spacing: 2;
+    font-size: 18px;
+	text-align: left;
+}
+h5 {
+	color: floralwhite; 
+    font-weight: 100;
+    letter-spacing: 2;
+    font-size: 15px;
+	text-align: left;
+}
+.project-details {
+	width: 600px;
+	height: 440px;
+	background: rgba(0,0,0,0.4);
+	padding: 30px;
+	color: white;
+	line-height:1;
+	margin: 0 auto;
+	margin-top:150px;
+	text-align: center;
+}
+.certificates {
+	width: 800px;
+	height: 440px;
+	background: rgba(0,0,0,0.4);
+	padding: 30px;
+	color: white;
+	line-height:1;
+	margin: 0 auto;
+	margin-top:150px;
+	text-align: center;
+}
+.achive {
+	width: 800px;
+	height: 200px;
+	background: rgba(0,0,0,0.4);
+	padding: 30px;
+	color: white;
+	line-height:1;
+	margin: 0 auto;
+	margin-top:150px;
+	text-align: center;
+}
+.interest {
+	width: 400px;
+	height: 350px;
+	background: rgba(0,0,0,0.4);
+	padding: 30px;
+	color: white;
+	line-height:1;
+	margin: 0 auto;
+	margin-top:150px;
+	text-align: center;
+}
+.skills {
+	width: 400px;
+	height: 350px;
+	background: rgba(0,0,0,0.4);
+	padding: 30px;
+	color: white;
+	line-height:1;
+	margin: 0 auto;
+	margin-top:150px;
+	text-align: center;
+}
