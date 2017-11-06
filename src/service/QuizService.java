@@ -37,8 +37,8 @@ public class QuizService {
         }
         return question;
     }
-    public void putQuestionToResult(String question, String correctAnswer, String selectedAnswer, int marks){
-        String query = "Insert into result(question,selectedAnswer,correctAnswer,marks)values(?,?,?,?)";
+    public void putQuestionToResult(String question, String correctAnswer, String selectedAnswer, int marks, int userId){
+        String query = "Insert into result(question,selectedAnswer,correctAnswer,marks,userId)values(?,?,?,?,?)";
         DatabaseConnection db = new DatabaseConnection();
         PreparedStatement pstm = db.getPreparedStatement(query);
         try {
@@ -46,18 +46,20 @@ public class QuizService {
             pstm.setString(2,selectedAnswer);
             pstm.setString(3,correctAnswer);
             pstm.setInt(4,marks);
+            pstm.setInt(5,userId);
             pstm.executeUpdate();
         }
         catch (SQLException e){
             e.printStackTrace();
         }
     }
-    public List<QuizResult> getQuestionListFromResult(){
+    public List<QuizResult> getQuestionListFromResult(int userId){
         List<QuizResult> quizResult = new ArrayList<QuizResult>();
-        String query = "SELECT * FROM result";
+        String query = "SELECT * FROM result where userId=?";
         DatabaseConnection db = new DatabaseConnection();
         PreparedStatement pstm = db.getPreparedStatement(query);
         try{
+            pstm.setInt(1, userId);
             ResultSet resultSet = pstm.executeQuery();
             while(resultSet.next()){
                 QuizResult result = new QuizResult();
@@ -65,6 +67,7 @@ public class QuizService {
                 result.setQuestion(resultSet.getString("question"));
                 result.setCorrectAnswer(resultSet.getString("correctAnswer"));
                 result.setSelectedAnswer(resultSet.getString("selectedAnswer"));
+                result.setMarks(resultSet.getInt("marks"));
                 result.setMarks(resultSet.getInt("marks"));
                 quizResult.add(result);
             }
@@ -74,11 +77,12 @@ public class QuizService {
         }
         return quizResult;
     }
-    public void deleteTable(){
-        String query = "DELETE FROM result";
+    public void deleteTable(int userId){
+        String query = "DELETE FROM result where userid=?";
         DatabaseConnection db = new DatabaseConnection();
         PreparedStatement pstm = db.getPreparedStatement(query);
         try{
+            pstm.setInt(1, userId);
             pstm.executeUpdate();
         }
         catch (SQLException e){

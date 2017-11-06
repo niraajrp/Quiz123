@@ -23,8 +23,11 @@ public class QuizServlet extends HttpServlet {
         String page = request.getParameter("page");
 
         if (page.equalsIgnoreCase("quizInstruction")){
+            HttpSession session = request.getSession(false);
+            int userId = (Integer)session.getAttribute("userId");
+
             QuizService quizService = new QuizService();
-            quizService.deleteTable();
+            quizService.deleteTable(userId);
             RequestDispatcher rd = request.getRequestDispatcher("quiz/instructions.jsp");
             rd.forward(request,response);
         }
@@ -42,16 +45,22 @@ public class QuizServlet extends HttpServlet {
                 String selectedAnswer = request.getParameter("answer");
                 String playedQuestion = request.getParameter("question");
                 int marks = 0;
-                if (correctAnswer==selectedAnswer){
+                HttpSession session = request.getSession(false);
+//                System.out.println(session);
+
+                int userId = (Integer)session.getAttribute("userId");
+                System.out.println(userId);
+
+                if (correctAnswer.equals(selectedAnswer)){
                     marks = 10;
-                    System.out.println("marks=1 "+correctAnswer+selectedAnswer+playedQuestion+marks);
+//                    System.out.println("marks=1 "+correctAnswer+selectedAnswer+playedQuestion+marks);
                 }
                 else {
-                    marks = 5;
-                    System.out.println("marks=0 "+correctAnswer+selectedAnswer+playedQuestion+marks);
+                    marks = 0;
+//                    System.out.println("marks=0 "+correctAnswer+selectedAnswer+playedQuestion+marks);
                 }
                 QuizService quizService = new QuizService();
-                quizService.putQuestionToResult(playedQuestion, correctAnswer, selectedAnswer, marks);
+                quizService.putQuestionToResult(playedQuestion, correctAnswer, selectedAnswer, marks, userId);
             }
             QuizService quizService = new QuizService();
             Question question = quizService.getQuestionForQuiz(id);
@@ -62,14 +71,16 @@ public class QuizServlet extends HttpServlet {
                 rd.forward(request, response);
 
             }else{
-
                 RequestDispatcher rd = request.getRequestDispatcher("quiz/submit.jsp");
                 rd.forward(request, response);
             }
         }
         if(page.equalsIgnoreCase("viewResult")){
+            HttpSession session = request.getSession(false);
+            int userId = (Integer)session.getAttribute("userId");
+
             QuizService quizService = new QuizService();
-            List<QuizResult> quizResult = quizService.getQuestionListFromResult();
+            List<QuizResult> quizResult = quizService.getQuestionListFromResult(userId);
             request.setAttribute("quizResult", quizResult);
             //Get result from database
             // display result in result page
@@ -77,8 +88,11 @@ public class QuizServlet extends HttpServlet {
             rd.forward(request, response);
         }
         if (page.equalsIgnoreCase("finishQuiz")){
+            HttpSession session = request.getSession(false);
+            int userId = (Integer)session.getAttribute("userId");
+
             QuizService quizService = new QuizService();
-            quizService.deleteTable();
+            quizService.deleteTable(userId);
             RequestDispatcher rd = request.getRequestDispatcher("user/home.jsp");
             rd.forward(request, response);
         }

@@ -105,6 +105,6 @@ tr:last-of-type td:last-child {
 /*}*/
 
 tbody:hover tr:hover td {
-    color: red;
+    color: blue;
     /*text-shadow: 0 1px 0 #fff;*/
 }

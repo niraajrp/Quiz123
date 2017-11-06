@@ -25,6 +25,7 @@ public class UsersServlet extends javax.servlet.http.HttpServlet {
 
                 HttpSession session = request.getSession(false);
                 session.setAttribute("user", user);
+                session.setAttribute("userId", user.getId());
 
 
                 request.setAttribute("msg","Login Successful!!");

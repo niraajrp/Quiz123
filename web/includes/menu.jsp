@@ -1,15 +1,15 @@
 
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%--<%
+<%
 //    response.setHeader("Cache-Control","no-cache");
 //    response.setHeader("Cache-Control","no-store");
 //    response.setHeader("Pragma","no-cache");
 //    response.setDateHeader ("Expires", 0);
 
-    if(session.getAttribute("user")==null)
-        response.sendRedirect("index.jsp");
+//    if(session.getAttribute("user")==null)
+//        response.sendRedirect("index.jsp");
 
-%>--%>
+%>
 <div class="topnav">
     <div style="color: #4CAF50; text-align: center">
         <h3>${msg}</h3>

@@ -13,6 +13,12 @@
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
+<%--<%--%>
+    <%--response.setHeader("Cache-Control","no-cache");--%>
+    <%--response.setHeader("Cache-Control","no-store");--%>
+    <%--response.setHeader("Pragma","no-cache");--%>
+    <%--response.setDateHeader ("Expires", 0);--%>
+<%--%>--%>
 
 <%@include file="../includes/menu.jsp"%>
 <form class="quiz-form" method="post" action="nextQuestion">

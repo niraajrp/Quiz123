@@ -13,6 +13,15 @@
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
     <link rel="stylesheet" href="../css/table.css">
 </head>
+<style>
+    .green {
+        color: green;
+    }
+
+    .red    {
+        color: red;
+    }
+</style>
 <body>
 <%@include file="../includes/menu.jsp"%>
 <table>
@@ -26,15 +35,36 @@
     </thead>
     <tbody>
     <c:forEach items="${quizResult}" var="result">
-        <tr>
-            <td>${result.question}</td>
-            <td>${result.selectedAnswer}</td>
-            <td>${result.correctAnswer}</td>
-            <td>${result.marks}</td>
-        </tr>
+        <c:choose>
+            <c:when test="${result.selectedAnswer==result.correctAnswer}">
+                <tr>
+                    <td class="green">${result.question}</td>
+                    <td class="green">${result.selectedAnswer}</td>
+                    <td class="green">${result.correctAnswer}</td>
+                    <td class="green">${result.marks}</td>
+                </tr>
+            </c:when>
+            <c:otherwise>
+                <tr>
+                    <td class="red">${result.question}</td>
+                    <td class="red">${result.selectedAnswer}</td>
+                    <td class="red">${result.correctAnswer}</td>
+                    <td class="red">${result.marks}</td>
+                </tr>
+            </c:otherwise>
+        </c:choose>
     </c:forEach>
     </tbody>
 </table>
+<c:set var="total" value="${0}"/>
+<c:forEach var="result" items="${quizResult}">
+    <c:set var="total" value="${total + result.marks}" />
+</c:forEach>
+<div style="text-align: center">
+    <h1>Your Total Score is </h1>
+    <h1>${total}</h1>
+</div>
+
 <form class="finish-quiz" method="post" action="finishQuiz">
     <input type="hidden" name="page" value="finishQuiz">
     <input type="submit" name="" value="Finish Quiz">
