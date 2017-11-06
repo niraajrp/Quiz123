@@ -54,7 +54,7 @@ public class UserService {
                 user.setPassword(rs.getString("password"));
                 user.setName(rs.getString("name"));
                 user.setRole(rs.getString("role"));
-                System.out.println(user);
+//                System.out.println(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();
